@@ -42,6 +42,8 @@
 		BDF8B1F224BECF440021106F /* DBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1F124BECF430021106F /* DBController.swift */; };
 		BDF8B1F424BECFCB0021106F /* DBDataObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1F324BECFCB0021106F /* DBDataObj.swift */; };
 		BDF8B1F724BED8DA0021106F /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1F624BED8DA0021106F /* ListVC.swift */; };
+		BDF8B1F924BEE2D90021106F /* CollectionViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1F824BEE2D90021106F /* CollectionViewUtilities.swift */; };
+		BDF8B1FB24BEE30D0021106F /* DataTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1FA24BEE30D0021106F /* DataTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		BDF8B1F124BECF430021106F /* DBController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBController.swift; sourceTree = "<group>"; };
 		BDF8B1F324BECFCB0021106F /* DBDataObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBDataObj.swift; sourceTree = "<group>"; };
 		BDF8B1F624BED8DA0021106F /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		BDF8B1F824BEE2D90021106F /* CollectionViewUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewUtilities.swift; sourceTree = "<group>"; };
+		BDF8B1FA24BEE30D0021106F /* DataTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTVC.swift; sourceTree = "<group>"; };
 		C5041F2AD9893E4A6D9764E6 /* Pods-AxxessChallenge-AxxessChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AxxessChallenge-AxxessChallengeUITests.debug.xcconfig"; path = "Target Support Files/Pods-AxxessChallenge-AxxessChallengeUITests/Pods-AxxessChallenge-AxxessChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DCC299DA0DFB3F894181418F /* Pods_AxxessChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AxxessChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB1A74EB4663123BBB44BB3 /* Pods-AxxessChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AxxessChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-AxxessChallengeTests/Pods-AxxessChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		BDF8B1B024BE2C110021106F /* ViewsCells */ = {
 			isa = PBXGroup;
 			children = (
+				BDF8B1FA24BEE30D0021106F /* DataTVC.swift */,
 			);
 			name = ViewsCells;
 			path = AxxessChallenge/ViewsCells;
@@ -294,6 +299,7 @@
 				BDF8B1C924BE2C250021106F /* TableViewDataSource.swift */,
 				BDF8B1CA24BE2C250021106F /* StringUtilities.swift */,
 				BDF8B1CB24BE2C250021106F /* TableViewUtilities.swift */,
+				BDF8B1F824BEE2D90021106F /* CollectionViewUtilities.swift */,
 				BDF8B1CC24BE2C250021106F /* Labels.swift */,
 				BDF8B1CD24BE2C250021106F /* Alerts.swift */,
 				BDF8B1CE24BE2C250021106F /* Dates.swift */,
@@ -584,7 +590,9 @@
 				BDF8B1DF24BE2C250021106F /* ViewUtilities.swift in Sources */,
 				BDF8B1A424BE2A400021106F /* Constants.swift in Sources */,
 				BDF8B1EE24BECD650021106F /* APIModel.swift in Sources */,
+				BDF8B1FB24BEE30D0021106F /* DataTVC.swift in Sources */,
 				BDF8B1F024BECDF30021106F /* APIDataController.swift in Sources */,
+				BDF8B1F924BEE2D90021106F /* CollectionViewUtilities.swift in Sources */,
 				BDF8B1E524BE2C250021106F /* Alerts.swift in Sources */,
 				BDF8B1F224BECF440021106F /* DBController.swift in Sources */,
 			);

@@ -18,7 +18,7 @@ import RealmSwift
     dynamic var id:  String! = ""
     dynamic var date: String? = ""
     dynamic var data: String? = ""
-    dynamic var type: TypeEnum = .text
+    dynamic var type: String? = ""
     
     override static func primaryKey() -> String? {
         return DBDataObj.Property.id.rawValue
@@ -27,7 +27,7 @@ import RealmSwift
     convenience init(_ apiObject: APIModel) {
         self.init()
         self.id = apiObject.id
-        self.type = apiObject.type
+        self.type = apiObject.type.rawValue
         self.date = apiObject.date
         self.data = apiObject.data
     }
@@ -40,6 +40,10 @@ extension DBDataObj {
 
     static func find(id: String, in realm: Realm = try! Realm()) -> Results<DBDataObj> {
         return realm.objects(DBDataObj.self).filter("id = '\(id)'")
+    }
+    
+    static func find(type: TypeEnum, in realm: Realm = try! Realm()) -> Results<DBDataObj> {
+        return realm.objects(DBDataObj.self).filter("type = '\(type.rawValue)'")
     }
 
     @discardableResult

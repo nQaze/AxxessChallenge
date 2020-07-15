@@ -8,52 +8,56 @@
 
 import UIKit
 
-class PageTitleLabel: UILabel {
+class Heading: UILabel {
+    
+    override init(frame: CGRect) {
+           super.init(frame: frame)
+           commonInit()
+       }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        textColor = Color.blackText
-        font = Font.heavy.withSize(font.pointSize)
+              super.init(coder: aDecoder)
+              commonInit()
+          }
+    
+    func commonInit(){
+        textColor = UIColor.black
+        font = Font.bold.withSize(22)
     }
 }
 
-class DefaultLabel: UILabel {
+class SubHeading: UILabel {
+    
+    override init(frame: CGRect) {
+           super.init(frame: frame)
+           commonInit()
+       }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        textColor = Color.darkText
-        font = Font.regular.withSize(font.pointSize)
+              super.init(coder: aDecoder)
+              commonInit()
+          }
+    
+    func commonInit(){
+        textColor = UIColor.black
+        font = Font.regular.withSize(15)
     }
 }
 
-class SemiBoldLabel: UILabel {
+class Body: UILabel {
+    
+    override init(frame: CGRect) {
+           super.init(frame: frame)
+           commonInit()
+       }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        textColor = Color.darkText
-        font = Font.bold.withSize(font.pointSize)
-    }
-}
-
-class CardTitleLabel: UILabel {
+              super.init(coder: aDecoder)
+              commonInit()
+          }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        textColor = Color.veryLightText
-        font = Font.bold.withSize(font.pointSize)
-    }
-}
-
-class CardSubtitleLabel: UILabel {
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        textColor = Color.veryLightText
-        font = Font.semiBold.withSize(font.pointSize)
+    func commonInit(){
+        textColor = UIColor.gray
+        font = Font.regular.withSize(12)
     }
 }
