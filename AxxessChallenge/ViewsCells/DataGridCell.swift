@@ -52,27 +52,28 @@ extension DataGridCell{
     func configureUI() {
         self.contentView.backgroundColor = UIColor.white
         
-        idLabel = SubHeading()
-        dateLabel = Body()
-        
         imageView = UIImageView()
         imageView.backgroundColor = UIColor.black
         imageView.layer.masksToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         
+        self.contentView.addSubview(imageView)
+        
         let vStack = UIStackView()
+        self.contentView.addSubview(vStack)
+        
+        idLabel = SubHeading()
+        dateLabel = Body()
+        
         vStack.axis = .vertical
         vStack.distribution = .fillEqually
         vStack.alignment = .fill
         vStack.spacing = 2
-        vStack.translatesAutoresizingMaskIntoConstraints = true
+        vStack.translatesAutoresizingMaskIntoConstraints = false
         
         vStack.addArrangedSubview(idLabel)
         vStack.addArrangedSubview(dateLabel)
-        
-        self.contentView.addSubview(imageView)
-        self.contentView.addSubview(vStack)
         
         vStack.snp.makeConstraints {
             $0.left.equalToSuperview().offset(0)

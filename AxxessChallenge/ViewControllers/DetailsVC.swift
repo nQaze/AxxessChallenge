@@ -15,6 +15,7 @@ class DetailsVC: UIViewController {
     var dateLabel: Body!
     var typeLabel: Chip!
     var imageView : UIImageView!
+    var scrollView: UIScrollView!
     
     var data: DBDataObj!
     
@@ -25,7 +26,6 @@ class DetailsVC: UIViewController {
     }
     
     func setData(){
-        
         typeLabel.text = data.type
         idLabel.text = data.id
         
@@ -57,11 +57,37 @@ class DetailsVC: UIViewController {
             default:
                 break
         }
-        
     }
+
+}
+
+extension DetailsVC {
     
     func configureUI() {
         self.view.backgroundColor = UIColor.white
+        
+        scrollView = UIScrollView()
+        view.addSubview(self.scrollView)
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
+        }
+        
+        let vStack = UIStackView()
+        scrollView.addSubview(vStack)
+        
+        vStack.axis = .vertical
+        vStack.distribution = .equalSpacing
+        vStack.alignment = .leading
+        vStack.spacing = 12
+        vStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        vStack.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0))
+            $0.width.equalToSuperview()
+        }
         
         typeLabel = Chip()
         idLabel = Heading()
@@ -73,16 +99,9 @@ class DetailsVC: UIViewController {
         
         imageView = UIImageView()
         imageView.backgroundColor = UIColor.black
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        
-        let vStack = UIStackView()
-        vStack.axis = .vertical
-        vStack.distribution = .equalSpacing
-        vStack.alignment = .leading
-        vStack.spacing = 12
-        vStack.translatesAutoresizingMaskIntoConstraints = false
         
         vStack.addArrangedSubview(typeLabel)
         vStack.addArrangedSubview(idLabel)
@@ -90,19 +109,12 @@ class DetailsVC: UIViewController {
         vStack.addArrangedSubview(dataLabel)
         vStack.addArrangedSubview(dateLabel)
         
-        self.view.addSubview(vStack)
-        
         imageView.snp.makeConstraints {
             $0.height.equalTo(200)
-        }
-        
-        vStack.snp.makeConstraints {
-            $0.top.equalTo(self.topLayoutGuide.snp.bottom).offset(16)
-            $0.left.equalToSuperview().offset(16)
-            $0.right.equalToSuperview().offset(-16)
+            $0.right.equalTo(view)
         }
         
         self.view.layoutIfNeeded()
     }
-
+    
 }

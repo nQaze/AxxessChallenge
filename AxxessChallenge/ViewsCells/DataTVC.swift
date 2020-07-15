@@ -51,6 +51,19 @@ extension DataCell{
     
     func configureUI() {
         
+        let hStack = UIStackView()
+        self.contentView.addSubview(hStack)
+        
+        hStack.axis = .horizontal
+        hStack.distribution = .fillProportionally
+        hStack.alignment = .fill
+        hStack.spacing = 12
+        hStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        hStack.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16))
+        }
+        
         idLabel = Heading()
         dataLabel = SubHeading()
         dateLabel = Body()
@@ -70,27 +83,12 @@ extension DataCell{
         
         let lineView = UIView(frame: .zero)
         lineView.backgroundColor = UIColor.blue
-        lineView.snp.makeConstraints {
-            $0.width.equalTo(3)
-        }
-        
-        let hStack = UIStackView()
-        hStack.axis = .horizontal
-        hStack.distribution = .fillProportionally
-        hStack.alignment = .fill
-        hStack.spacing = 12
-        hStack.translatesAutoresizingMaskIntoConstraints = false
         
         hStack.addArrangedSubview(lineView)
         hStack.addArrangedSubview(vStack)
         
-        self.contentView.addSubview(hStack)
-        
-        hStack.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(16)
-            $0.right.equalToSuperview().offset(-16)
-            $0.top.equalToSuperview().offset(8)
-            $0.bottom.equalToSuperview().offset(-8)
+        lineView.snp.makeConstraints {
+            $0.width.equalTo(3)
         }
     }
     
