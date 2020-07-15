@@ -22,4 +22,9 @@ extension UIView{
         layer.shadowRadius = radius
         layer.shadowOpacity = 0.5
     }
+    
+    func round(){
+        self.layer.cornerRadius = self.frame.size.height / 2
+        self.clipsToBounds = true
+    }
 }

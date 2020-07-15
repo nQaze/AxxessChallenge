@@ -11,6 +11,7 @@
 		28DF2148E9FEC664235C992E /* Pods_AxxessChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866070A7A7320491E6A5473E /* Pods_AxxessChallengeTests.framework */; };
 		5846FCE07BB607D59CF88EB0 /* Pods_AxxessChallenge_AxxessChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A989D040A5F400A99EA43E4 /* Pods_AxxessChallenge_AxxessChallengeUITests.framework */; };
 		BDF1503824BF0B81005C4C44 /* DataGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF1503724BF0B81005C4C44 /* DataGridCell.swift */; };
+		BDF1503A24BF2999005C4C44 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF1503924BF2999005C4C44 /* DetailsVC.swift */; };
 		BDF8B17424BE27F90021106F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B17324BE27F90021106F /* AppDelegate.swift */; };
 		BDF8B17624BE27F90021106F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B17524BE27F90021106F /* SceneDelegate.swift */; };
 		BDF8B18024BE27FE0021106F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF8B17E24BE27FE0021106F /* LaunchScreen.storyboard */; };
@@ -72,6 +73,7 @@
 		6C827FC0779504332A3EFCE9 /* Pods-AxxessChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AxxessChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-AxxessChallengeTests/Pods-AxxessChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		866070A7A7320491E6A5473E /* Pods_AxxessChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AxxessChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF1503724BF0B81005C4C44 /* DataGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGridCell.swift; sourceTree = "<group>"; };
+		BDF1503924BF2999005C4C44 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		BDF8B17024BE27F90021106F /* AxxessChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AxxessChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF8B17324BE27F90021106F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDF8B17524BE27F90021106F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				BDF8B1F624BED8DA0021106F /* ListVC.swift */,
+				BDF1503924BF2999005C4C44 /* DetailsVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				BDF8B1A424BE2A400021106F /* Constants.swift in Sources */,
 				BDF8B1EE24BECD650021106F /* APIModel.swift in Sources */,
 				BDF8B1FB24BEE30D0021106F /* DataTVC.swift in Sources */,
+				BDF1503A24BF2999005C4C44 /* DetailsVC.swift in Sources */,
 				BDF8B1F024BECDF30021106F /* APIDataController.swift in Sources */,
 				BDF8B1F924BEE2D90021106F /* CollectionViewUtilities.swift in Sources */,
 				BDF1503824BF0B81005C4C44 /* DataGridCell.swift in Sources */,

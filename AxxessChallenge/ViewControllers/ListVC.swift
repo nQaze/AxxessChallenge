@@ -74,6 +74,14 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = textData?[indexPath.item]
+        
+        let detailsVC = DetailsVC()
+        detailsVC.data = data
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -94,6 +102,14 @@ extension ListVC: UICollectionViewDataSource, UICollectionViewDelegate {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = imageData?[indexPath.item]
+        
+        let detailsVC = DetailsVC()
+        detailsVC.data = data
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
 }
 
 extension ListVC {
@@ -105,7 +121,6 @@ extension ListVC {
         setupSegmentedControlView()
         
         applyUIConstraints()
-        
         showTableView()
     }
     
