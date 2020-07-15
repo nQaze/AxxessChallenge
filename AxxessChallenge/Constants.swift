@@ -9,8 +9,7 @@
 import Foundation
 
 struct Constants {
-    
-    
+    static let apiURL = "https://raw.githubusercontent.com/AxxessTech/Mobile-Projects/master/challenge.json"
 }
 
 struct Storyboard {
