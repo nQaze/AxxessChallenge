@@ -27,6 +27,7 @@ extension UIImageView {
                 print(error!)
                 performUIUpdatesOnMain {
                     if let defaultImage = defaultImage {
+                        self.contentMode = .scaleAspectFit
                         self.image = defaultImage
                     }
                 }

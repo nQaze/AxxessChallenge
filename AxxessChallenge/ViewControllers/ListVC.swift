@@ -12,8 +12,10 @@ import RealmSwift
 
 class ListVC : UIViewController {
     
-    private var apiDataController: APIDataController!
     private var tableView: UITableView!
+    private var collectionView: UICollectionView!
+    private var uisegmentedControl: UISegmentedControl!
+    private var apiDataController: APIDataController!
     private var dataToken: NotificationToken?
     private var data: Results<DBDataObj>?
     private var textData: Results<DBDataObj>?
@@ -21,6 +23,8 @@ class ListVC : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Axxess Challege!"
         
         setupUI()
         fetchLocalData()
@@ -75,17 +79,39 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension ListVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      return imageData?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DataGridCell.identifier, for: indexPath) as! DataGridCell
+        cell.data = imageData?[indexPath.item]
+        return cell
+    }
+    
+}
+
 extension ListVC {
     
     func setupUI(){
+        self.view.backgroundColor = UIColor.white
         setupTableView()
         setupCollectionView()
+        setupSegmentedControlView()
         
         applyUIConstraints()
+        
+        showTableView()
     }
     
     func setupTableView(){
         tableView = UITableView(frame: .zero)
+        tableView.backgroundColor = UIColor.white
         
         tableView.register(DataCell.self, forCellReuseIdentifier: DataCell.identifier)
         tableView.dataSource = self
@@ -100,12 +126,79 @@ extension ListVC {
     
     func setupCollectionView(){
         
+        let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        let columnLayout = ColumnFlowLayout(
+            cellsPerRow: 2,
+            minimumInteritemSpacing: 10,
+            minimumLineSpacing: 10,
+            sectionInset: sectionInsets,
+            cellHeigtAspect: 1.1
+        )
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: columnLayout)
+        collectionView.backgroundColor = UIColor.white
+        collectionView.collectionViewLayout = columnLayout
+        collectionView.alwaysBounceVertical = true
+        
+        collectionView.register(DataGridCell.self, forCellWithReuseIdentifier: DataGridCell.identifier)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+               
+        self.view.addSubview(collectionView)
+    }
+    
+    func setupSegmentedControlView() {
+        let segmentItems = ["Texts", "Images"]
+        uisegmentedControl = UISegmentedControl(items: segmentItems)
+        uisegmentedControl.frame = .zero
+        uisegmentedControl.addTarget(self, action: #selector(segmentControl(_:)), for: .valueChanged)
+        uisegmentedControl.selectedSegmentIndex = 0
+        self.view.addSubview(uisegmentedControl)
     }
     
     func applyUIConstraints(){
-        tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        uisegmentedControl.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(12)
+            $0.right.equalToSuperview().offset(-12)
+            $0.top.equalTo(self.topLayoutGuide.snp.bottom).offset(12)
         }
+        
+        collectionView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(0)
+            $0.right.equalToSuperview().offset(0)
+            $0.bottom.equalToSuperview().offset(0)
+            $0.top.equalTo(uisegmentedControl.snp.bottom).offset(12)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(0)
+            $0.right.equalToSuperview().offset(0)
+            $0.bottom.equalToSuperview().offset(0)
+            $0.top.equalTo(uisegmentedControl.snp.bottom).offset(12)
+        }
+    }
+    
+    @objc func segmentControl(_ segmentedControl: UISegmentedControl) {
+       switch (segmentedControl.selectedSegmentIndex) {
+          case 0:
+             showTableView()
+            break
+          case 1:
+             showCollectionView()
+            break
+          default:
+            break
+       }
+    }
+    
+    func showTableView(){
+        collectionView.isHidden = true
+        tableView.isHidden = false
+    }
+    
+    func showCollectionView(){
+        tableView.isHidden = true
+        collectionView.isHidden = false
     }
     
 }

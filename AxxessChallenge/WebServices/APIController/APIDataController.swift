@@ -17,8 +17,7 @@ class APIDataController {
         request.responseDecodable(of: APIModelList.self) { (response) in
           guard let response = response.value else { return }
             DBDataObj.deleteAll()
-            let dbObjects = DBDataObj.addAll(apiObjList: response)
-            print(dbObjects)
+            DBDataObj.addAll(apiObjList: response)
         }
     }
 
