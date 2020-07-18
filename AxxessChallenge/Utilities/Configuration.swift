@@ -14,6 +14,7 @@ let primarLightColor                            = "#80BEFD"
 let primaryDarkColor                            = "#037FFB"
 
 // Text
+let whiteColor                                  = "#FFFFFF"
 let blackColor                                  = "#000000"
 let darkTextColor                               = "#333333"
 let mediumTextColor                             = "#4f4f4f"

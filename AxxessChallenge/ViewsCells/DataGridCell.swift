@@ -50,10 +50,10 @@ class DataGridCell: UICollectionViewCell {
 extension DataGridCell{
     
     func configureUI() {
-        self.contentView.backgroundColor = UIColor.white
+        self.contentView.backgroundColor = Color.backgroundColor
         
         imageView = UIImageView()
-        imageView.backgroundColor = UIColor.black
+        imageView.backgroundColor = Color.imageBGColor
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill

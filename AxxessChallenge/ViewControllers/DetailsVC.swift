@@ -64,7 +64,7 @@ class DetailsVC: UIViewController {
 extension DetailsVC {
     
     func configureUI() {
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = Color.backgroundColor
         
         scrollView = UIScrollView()
         view.addSubview(self.scrollView)
@@ -98,7 +98,7 @@ extension DetailsVC {
         dataLabel.numberOfLines = 0
         
         imageView = UIImageView()
-        imageView.backgroundColor = UIColor.black
+        imageView.backgroundColor = Color.imageBGColor
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false

@@ -23,6 +23,8 @@ struct Color {
     static let veryLightText = UIColor(veryLightTextColor)
     static let errorText = UIColor(errorTextColor)
     
+    static let backgroundColor = UIColor(whiteColor)
+    static let imageBGColor = UIColor(blackColor)
     static let separator = UIColor(separatorColor)
 }
 

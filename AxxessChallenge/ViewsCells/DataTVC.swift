@@ -82,7 +82,7 @@ extension DataCell{
         vStack.translatesAutoresizingMaskIntoConstraints = false
         
         let lineView = UIView(frame: .zero)
-        lineView.backgroundColor = UIColor.blue
+        lineView.backgroundColor = Color.primaryDark
         
         hStack.addArrangedSubview(lineView)
         hStack.addArrangedSubview(vStack)

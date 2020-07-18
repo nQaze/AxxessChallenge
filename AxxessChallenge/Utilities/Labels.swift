@@ -21,7 +21,7 @@ class Heading: UILabel {
     }
     
     func commonInit(){
-        textColor = UIColor.black
+        textColor = Color.blackText
         font = Font.bold.withSize(22)
     }
 }
@@ -39,7 +39,7 @@ class SubHeading: UILabel {
     }
     
     func commonInit(){
-        textColor = UIColor.black
+        textColor = Color.blackText
         font = Font.regular.withSize(15)
     }
 }
@@ -57,7 +57,7 @@ class Body: UILabel {
     }
     
     func commonInit(){
-        textColor = UIColor.gray
+        textColor = Color.lightText
         font = Font.regular.withSize(12)
     }
 }
@@ -94,8 +94,8 @@ class Chip: PaddingLabel {
     }
     
     func commonInit(){
-        backgroundColor = UIColor.darkGray
-        textColor = UIColor.white
+        backgroundColor = Color.darkText
+        textColor = Color.veryLightText
         font =  Font.bold.withSize(18)
     }
     

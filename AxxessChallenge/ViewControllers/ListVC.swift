@@ -122,7 +122,7 @@ extension ListVC: UICollectionViewDataSource, UICollectionViewDelegate {
 extension ListVC {
     
     func setupUI(){
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = Color.backgroundColor
         setupTableView()
         setupCollectionView()
         setupSegmentedControlView()
@@ -147,7 +147,7 @@ extension ListVC {
     
     func setupTableView(){
         tableView = UITableView(frame: .zero)
-        tableView.backgroundColor = UIColor.white
+        tableView.backgroundColor = Color.backgroundColor
         
         tableView.register(DataCell.self, forCellReuseIdentifier: DataCell.identifier)
         tableView.dataSource = self
@@ -172,7 +172,7 @@ extension ListVC {
         )
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: columnLayout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = Color.backgroundColor
         collectionView.collectionViewLayout = columnLayout
         collectionView.alwaysBounceVertical = true
         
