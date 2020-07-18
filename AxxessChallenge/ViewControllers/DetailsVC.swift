@@ -10,12 +10,12 @@ import UIKit
 
 class DetailsVC: UIViewController {
 
-    var idLabel: Heading!
-    var dataLabel: SubHeading!
-    var dateLabel: Body!
-    var typeLabel: Chip!
-    var imageView : UIImageView!
-    var scrollView: UIScrollView!
+    private var idLabel: Heading!
+    private var dataLabel: SubHeading!
+    private var dateLabel: Body!
+    private var typeLabel: Chip!
+    private var imageView : UIImageView!
+    private var scrollView: UIScrollView!
     
     var data: DBDataObj!
     
@@ -25,7 +25,7 @@ class DetailsVC: UIViewController {
         setData()
     }
     
-    func setData(){
+    private func setData(){
         typeLabel.text = data.type
         idLabel.text = data.id
         
@@ -63,18 +63,21 @@ class DetailsVC: UIViewController {
 
 extension DetailsVC {
     
-    func configureUI() {
+    private func configureUI() {
         self.view.backgroundColor = Color.backgroundColor
         
+        //Adding ScrollView
         scrollView = UIScrollView()
         view.addSubview(self.scrollView)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
+        //Setting ScrollView Constraints
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
         }
         
+        //Adding Content Holder View (StackView) inside ScrollView.
         let vStack = UIStackView()
         scrollView.addSubview(vStack)
         
@@ -84,11 +87,13 @@ extension DetailsVC {
         vStack.spacing = 12
         vStack.translatesAutoresizingMaskIntoConstraints = false
         
+        //Setting StackView Constraints
         vStack.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0))
             $0.width.equalToSuperview()
         }
         
+        //Adding Content Views inside StackView
         typeLabel = Chip()
         idLabel = Heading()
         dataLabel = SubHeading()

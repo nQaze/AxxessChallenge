@@ -17,8 +17,6 @@ class ListVC : UIViewController {
     private var collectionView: UICollectionView!
     private var uisegmentedControl: UISegmentedControl!
     private var apiDataController: APIDataController!
-    private var dataToken: NotificationToken?
-    private var data: Results<DBDataObj>?
     private var textData: Results<DBDataObj>?
     private var imageData: Results<DBDataObj>?
     private var displayMessage = Constants.noDataMessage
@@ -32,29 +30,41 @@ class ListVC : UIViewController {
         fetchAPIData()
     }
     
-    func fetchLocalData(){
-        textData = DBDataObj.find(type: .text)
-        imageData = DBDataObj.find(type: .image)
+    private func setupUI(){
+        self.view.backgroundColor = Color.backgroundColor
+        setupTableView()
+        setupCollectionView()
+        setupSegmentedControlView()
         
-        tableView.reloadData()
-        collectionView.reloadData()
+        applyUIConstraints()
+        showTableView()
+        setupLoader()
     }
     
-    func fetchAPIData(){
-        resetDisplayMessages()
-        
+    private func fetchAPIData(){
         apiDataController = APIDataController()
         apiDataController.fetchData{ data, error in
             self.activityIndicator.stopAnimating()
             guard let data = data else{
                 self.displayMessage = error ?? ""
+                //Display local data if API Fails
                 self.fetchLocalData()
                 return
             }
+            
+            //Update DB content and reload Views
             DBDataObj.deleteAll()
             DBDataObj.addAll(apiObjList: data)
             self.fetchLocalData()
         }
+    }
+    
+    private func fetchLocalData(){
+        textData = DBDataObj.find(type: .text)
+        imageData = DBDataObj.find(type: .image)
+        
+        tableView.reloadData()
+        collectionView.reloadData()
     }
     
     
@@ -121,18 +131,7 @@ extension ListVC: UICollectionViewDataSource, UICollectionViewDelegate {
 
 extension ListVC {
     
-    func setupUI(){
-        self.view.backgroundColor = Color.backgroundColor
-        setupTableView()
-        setupCollectionView()
-        setupSegmentedControlView()
-        
-        applyUIConstraints()
-        showTableView()
-        setupLoader()
-    }
-    
-    func setupLoader(){
+    private func setupLoader(){
         activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
@@ -140,12 +139,7 @@ extension ListVC {
         view.addSubview(activityIndicator)
     }
     
-    func resetDisplayMessages(){
-        tableView.removeEmptyMessage()
-        collectionView.removeEmptyMessage()
-    }
-    
-    func setupTableView(){
+    private func setupTableView(){
         tableView = UITableView(frame: .zero)
         tableView.backgroundColor = Color.backgroundColor
         
@@ -160,7 +154,7 @@ extension ListVC {
         self.view.addSubview(tableView)
     }
     
-    func setupCollectionView(){
+    private func setupCollectionView(){
         
         let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let columnLayout = ColumnFlowLayout(
@@ -183,7 +177,7 @@ extension ListVC {
         self.view.addSubview(collectionView)
     }
     
-    func setupSegmentedControlView() {
+    private func setupSegmentedControlView() {
         let segmentItems = ["Texts", "Images"]
         uisegmentedControl = UISegmentedControl(items: segmentItems)
         uisegmentedControl.frame = .zero
@@ -192,7 +186,7 @@ extension ListVC {
         self.view.addSubview(uisegmentedControl)
     }
     
-    func applyUIConstraints(){
+    private func applyUIConstraints(){
         uisegmentedControl.snp.makeConstraints {
             $0.left.equalToSuperview().offset(12)
             $0.right.equalToSuperview().offset(-12)
@@ -227,12 +221,12 @@ extension ListVC {
        }
     }
     
-    func showTableView(){
+    private func showTableView(){
         collectionView.isHidden = true
         tableView.isHidden = false
     }
     
-    func showCollectionView(){
+    private func showCollectionView(){
         tableView.isHidden = true
         collectionView.isHidden = false
     }

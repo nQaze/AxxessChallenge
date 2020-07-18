@@ -12,9 +12,9 @@ class DataGridCell: UICollectionViewCell {
     
     static let identifier: String = "identifier_datagird_cell"
     
-    var idLabel: SubHeading!
-    var dateLabel: Body!
-    var imageView : UIImageView!
+    private var idLabel: SubHeading!
+    private var dateLabel: Body!
+    private var imageView : UIImageView!
     
     var data: DBDataObj! {
         didSet {
@@ -49,7 +49,7 @@ class DataGridCell: UICollectionViewCell {
 
 extension DataGridCell{
     
-    func configureUI() {
+    private func configureUI() {
         self.contentView.backgroundColor = Color.backgroundColor
         
         imageView = UIImageView()

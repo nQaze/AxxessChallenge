@@ -12,15 +12,3 @@ struct Constants {
     static let apiURL = "https://raw.githubusercontent.com/AxxessTech/Mobile-Projects/master/challenge.json"
     static let noDataMessage = "Uh ho! No data found :("
 }
-
-struct Storyboard {
-    static let main = "Main"
-}
-
-struct ViewsCells {
-    static let textTableViewCell = "textTableViewCell"
-}
-
-struct SegueIdentifier {
-    static let openDetails = "openDetailsVC"
-}

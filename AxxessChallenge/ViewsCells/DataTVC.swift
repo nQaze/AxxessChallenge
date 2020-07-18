@@ -12,9 +12,9 @@ class DataCell: UITableViewCell {
     
     static let identifier: String = "identifier_data_cell"
     
-    var idLabel: Heading!
-    var dataLabel: SubHeading!
-    var dateLabel: Body!
+    private var idLabel: Heading!
+    private var dataLabel: SubHeading!
+    private var dateLabel: Body!
     
     var data: DBDataObj! {
         didSet {
@@ -49,8 +49,9 @@ class DataCell: UITableViewCell {
 
 extension DataCell{
     
-    func configureUI() {
+    private func configureUI() {
         
+        //Adding Horizontal Parent StackView
         let hStack = UIStackView()
         self.contentView.addSubview(hStack)
         
@@ -64,6 +65,7 @@ extension DataCell{
             $0.edges.equalToSuperview().inset(UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16))
         }
         
+        //Adding Labels to display our data
         idLabel = Heading()
         dataLabel = SubHeading()
         dateLabel = Body()
@@ -74,6 +76,7 @@ extension DataCell{
         labelArray.append(dataLabel)
         labelArray.append(dateLabel)
         
+        //Adding Vertical StackView to hold our Labels
         let vStack = UIStackView(arrangedSubviews: labelArray)
         vStack.axis = .vertical
         vStack.distribution = .fillProportionally
