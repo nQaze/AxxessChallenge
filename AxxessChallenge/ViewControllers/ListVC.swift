@@ -12,6 +12,7 @@ import RealmSwift
 
 class ListVC : UIViewController {
     
+    private var activityIndicator: UIActivityIndicatorView!
     private var tableView: UITableView!
     private var collectionView: UICollectionView!
     private var uisegmentedControl: UISegmentedControl!
@@ -20,6 +21,7 @@ class ListVC : UIViewController {
     private var data: Results<DBDataObj>?
     private var textData: Results<DBDataObj>?
     private var imageData: Results<DBDataObj>?
+    private var displayMessage = Constants.noDataMessage
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,44 +29,44 @@ class ListVC : UIViewController {
         title = "Axxess Challege!"
         
         setupUI()
-        fetchLocalData()
         fetchAPIData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-         
-        dataToken = data?.observe { [weak tableView] changes in
-            guard let tableView = tableView else { return }
-            switch changes {
-            case .initial:
-                tableView.reloadData()
-            case .update(_, let deletions, let insertions, let updates):
-                tableView.applyChanges(deletions: deletions, insertions: insertions, updates: updates)
-            case .error: break
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        dataToken?.invalidate()
     }
     
     func fetchLocalData(){
         textData = DBDataObj.find(type: .text)
         imageData = DBDataObj.find(type: .image)
+        
+        tableView.reloadData()
+        collectionView.reloadData()
     }
     
     func fetchAPIData(){
+        resetDisplayMessages()
+        
         apiDataController = APIDataController()
-        apiDataController.fetchData()
+        apiDataController.fetchData{ data, error in
+            self.activityIndicator.stopAnimating()
+            guard let data = data else{
+                self.displayMessage = error ?? ""
+                self.fetchLocalData()
+                return
+            }
+            DBDataObj.deleteAll()
+            DBDataObj.addAll(apiObjList: data)
+            self.fetchLocalData()
+        }
     }
+    
     
 }
 
 extension ListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if textData?.count == 0{
+            tableView.setEmptyMessage(displayMessage)
+        } else {
+            tableView.removeEmptyMessage()
+        }
         return textData?.count ?? 0
     }
 
@@ -93,7 +95,12 @@ extension ListVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return imageData?.count ?? 0
+        if imageData?.count == 0{
+            collectionView.setEmptyMessage(displayMessage)
+        } else {
+            collectionView.removeEmptyMessage()
+        }
+        return imageData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -122,6 +129,20 @@ extension ListVC {
         
         applyUIConstraints()
         showTableView()
+        setupLoader()
+    }
+    
+    func setupLoader(){
+        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+    }
+    
+    func resetDisplayMessages(){
+        tableView.removeEmptyMessage()
+        collectionView.removeEmptyMessage()
     }
     
     func setupTableView(){
@@ -175,7 +196,7 @@ extension ListVC {
         uisegmentedControl.snp.makeConstraints {
             $0.left.equalToSuperview().offset(12)
             $0.right.equalToSuperview().offset(-12)
-            $0.top.equalTo(self.topLayoutGuide.snp.bottom).offset(12)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(12)
         }
         
         collectionView.snp.makeConstraints {

@@ -11,13 +11,15 @@ import Alamofire
 
 class APIDataController {
     
-    func fetchData() {
+    func fetchData(completion: @escaping (_ response: APIModelList?, _ error: String?) -> Void) {
         let request = AF.request(Constants.apiURL)
 
         request.responseDecodable(of: APIModelList.self) { (response) in
-          guard let response = response.value else { return }
-            DBDataObj.deleteAll()
-            DBDataObj.addAll(apiObjList: response)
+            guard let data = response.value else {
+                completion(nil, response.error?.localizedDescription)
+                return
+            }
+            completion(data, nil)
         }
     }
 

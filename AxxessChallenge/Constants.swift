@@ -10,6 +10,7 @@ import Foundation
 
 struct Constants {
     static let apiURL = "https://raw.githubusercontent.com/AxxessTech/Mobile-Projects/master/challenge.json"
+    static let noDataMessage = "Uh ho! No data found :("
 }
 
 struct Storyboard {

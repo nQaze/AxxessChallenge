@@ -30,7 +30,6 @@
 		BDF8B1DE24BE2C250021106F /* ImageViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1C624BE2C250021106F /* ImageViewUtilities.swift */; };
 		BDF8B1DF24BE2C250021106F /* ViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1C724BE2C250021106F /* ViewUtilities.swift */; };
 		BDF8B1E024BE2C250021106F /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1C824BE2C250021106F /* GCDBlackBox.swift */; };
-		BDF8B1E124BE2C250021106F /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1C924BE2C250021106F /* TableViewDataSource.swift */; };
 		BDF8B1E224BE2C250021106F /* StringUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1CA24BE2C250021106F /* StringUtilities.swift */; };
 		BDF8B1E324BE2C250021106F /* TableViewUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1CB24BE2C250021106F /* TableViewUtilities.swift */; };
 		BDF8B1E424BE2C250021106F /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF8B1CC24BE2C250021106F /* Labels.swift */; };
@@ -98,7 +97,6 @@
 		BDF8B1C624BE2C250021106F /* ImageViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewUtilities.swift; sourceTree = "<group>"; };
 		BDF8B1C724BE2C250021106F /* ViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewUtilities.swift; sourceTree = "<group>"; };
 		BDF8B1C824BE2C250021106F /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
-		BDF8B1C924BE2C250021106F /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		BDF8B1CA24BE2C250021106F /* StringUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtilities.swift; sourceTree = "<group>"; };
 		BDF8B1CB24BE2C250021106F /* TableViewUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewUtilities.swift; sourceTree = "<group>"; };
 		BDF8B1CC24BE2C250021106F /* Labels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 				BDF8B1C624BE2C250021106F /* ImageViewUtilities.swift */,
 				BDF8B1C724BE2C250021106F /* ViewUtilities.swift */,
 				BDF8B1C824BE2C250021106F /* GCDBlackBox.swift */,
-				BDF8B1C924BE2C250021106F /* TableViewDataSource.swift */,
 				BDF8B1CA24BE2C250021106F /* StringUtilities.swift */,
 				BDF8B1CB24BE2C250021106F /* TableViewUtilities.swift */,
 				BDF8B1F824BEE2D90021106F /* CollectionViewUtilities.swift */,
@@ -581,7 +578,6 @@
 				BDF8B1F724BED8DA0021106F /* ListVC.swift in Sources */,
 				BDF8B1E024BE2C250021106F /* GCDBlackBox.swift in Sources */,
 				BDF8B1AC24BE2C070021106F /* WebServiceError.swift in Sources */,
-				BDF8B1E124BE2C250021106F /* TableViewDataSource.swift in Sources */,
 				BDF8B1E724BE2C250021106F /* Font.swift in Sources */,
 				BDF8B1E824BE2C250021106F /* Color.swift in Sources */,
 				BDF8B1E424BE2C250021106F /* Labels.swift in Sources */,
